@@ -782,7 +782,6 @@ GameObject:
   - component: {fileID: 1413888044}
   - component: {fileID: 1413888049}
   - component: {fileID: 1413888048}
-  - component: {fileID: 1413888045}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -803,25 +802,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7567754, y: 1.6269898, z: 1}
   m_Center: {x: 0.0053036213, y: 0.81337285, z: 0}
---- !u!95 &1413888045
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1413888043}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1413888047
 Transform:
   m_ObjectHideFlags: 0
@@ -852,6 +832,7 @@ MonoBehaviour:
   cam: {fileID: 1687258584}
   navAgent: {fileID: 1413888049}
   worldPosition: {x: 0, y: 0, z: 0}
+  animator: {fileID: 4584236247537247963}
 --- !u!195 &1413888049
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -863,10 +844,10 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 0.5
   avoidancePriority: 50
   m_AngularSpeed: 360
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -2971,6 +2952,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3807136220566076512}
+  - component: {fileID: 4584236247537247963}
   m_Layer: 0
   m_Name: paladin_prop_j_nordstrom@Sword And Shield Walk
   m_TagString: Untagged
@@ -2978,6 +2960,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &4584236247537247963
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4584236247537247962}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 833ba23417a2fae4aa08ec17d9b0db31, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &4585222157337997540
 Transform:
   m_ObjectHideFlags: 0
