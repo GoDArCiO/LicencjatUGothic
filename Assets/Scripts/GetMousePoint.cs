@@ -21,5 +21,6 @@ public class GetMousePoint : MonoBehaviour
             worldPosition = ray.GetPoint(distance);
             if (Input.GetMouseButtonDown(0)) navAgent.SetDestination(worldPosition);
         }
+        Debug.Log(navAgent.velocity.magnitude/navAgent.speed);
     }
 }
