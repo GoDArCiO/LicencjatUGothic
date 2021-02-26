@@ -10,6 +10,8 @@ public class GetMousePoint : MonoBehaviour
 
     public Vector3 worldPosition;
 
+    public Animator animator;
+
     void Update()
     {
         Plane plane = new Plane(Vector3.up, 0);
@@ -22,5 +24,7 @@ public class GetMousePoint : MonoBehaviour
             if (Input.GetMouseButtonDown(0)) navAgent.SetDestination(worldPosition);
         }
         Debug.Log(navAgent.velocity.magnitude/navAgent.speed);
+
+        animator.SetFloat("Blend", navAgent.velocity.magnitude / navAgent.speed);
     }
 }

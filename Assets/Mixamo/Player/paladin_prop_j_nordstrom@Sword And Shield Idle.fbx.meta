@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: b957cfb01db5ff64f89a541a5b7c1136
+guid: 38fcf4ad2e0c91a4496272399f4d75f6
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Sword And Shield Run
+    second: Sword And Shield Idle
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Sword And Shield Run
+      name: Sword And Shield Idle
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 21
+      lastFrame: 76
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
