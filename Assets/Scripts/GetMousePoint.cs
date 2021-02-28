@@ -49,6 +49,6 @@ public class GetMousePoint : MonoBehaviour
             currentInteractable.Interact(character);
         }
 
-        animator.SetFloat("Blend", navAgent.velocity.magnitude / navAgent.speed);
+        animator.SetFloat("Velocity", navAgent.velocity.magnitude / navAgent.speed);
     }
 }
