@@ -15,6 +15,7 @@ public class GetMousePoint : MonoBehaviour
 
     private Interactable currentInteractable;
     public float interactDistance;
+    public bool interacting;
 
     void Update()
     {
@@ -26,7 +27,7 @@ public class GetMousePoint : MonoBehaviour
         if (plane.Raycast(ray, out distance))
         {
             worldPosition = ray.GetPoint(distance);
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0)&&!interacting)
             {
                 currentInteractable = null;
                 navAgent.SetDestination(worldPosition);
@@ -44,9 +45,17 @@ public class GetMousePoint : MonoBehaviour
             }
         }
 
-        if(currentInteractable != null && Vector3.Distance(transform.position,currentInteractable.transform.position)<interactDistance)
+        if(currentInteractable != null && Vector3.Distance(transform.position,currentInteractable.transform.position)<interactDistance && !interacting)
         {
             currentInteractable.Interact(character);
+            interacting = true;
+        }
+
+        if (interacting && Input.GetKeyDown(KeyCode.I))
+        {
+            currentInteractable.StopInteracting();
+            currentInteractable = null;
+            interacting = false;
         }
 
         animator.SetFloat("Velocity", navAgent.velocity.magnitude / navAgent.speed);
