@@ -9,6 +9,8 @@ public class GetMousePoint : MonoBehaviour
     public Camera cam;
     public NavMeshAgent navAgent;
 
+    public Collider terrain;
+
     public Vector3 worldPosition;
 
     public Animator animator;
@@ -19,33 +21,47 @@ public class GetMousePoint : MonoBehaviour
 
     void Update()
     {
-        Plane plane = new Plane(Vector3.up, 0);
 
-        float distance;
+        HandleNavigation();
+
+        HandleInventory();
+
+        HandleAnimator();
+    }
+
+    private void HandleNavigation()
+    {
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (plane.Raycast(ray, out distance))
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit,1000))
         {
-            worldPosition = ray.GetPoint(distance);
-            if (Input.GetMouseButtonDown(0)&&!interacting)
+            worldPosition = hit.point;
+            if (Input.GetMouseButtonDown(0) && !interacting)
             {
                 currentInteractable = null;
-                navAgent.SetDestination(worldPosition);
+                navAgent.SetDestination(hit.point);
+                Debug.Log(transform.position + "x" + hit.point);
 
-                if (Physics.Raycast(ray, out hit))
+                currentInteractable = GameObjectTools.SearchForScript<Interactable>(hit.transform.gameObject, true, true);
+
+                if (currentInteractable != null)
                 {
-                    currentInteractable = GameObjectTools.SearchForScript<Interactable>(hit.transform.gameObject, true, true);
-
-                    if (currentInteractable != null)
-                    {
-                        navAgent.SetDestination(currentInteractable.transform.position);
-                    }
-                    
+                    navAgent.SetDestination(currentInteractable.transform.position);
                 }
+
+
             }
         }
+    }
 
-        if(currentInteractable != null && Vector3.Distance(transform.position,currentInteractable.transform.position)<interactDistance && !interacting)
+    private void HandleAnimator()
+    {
+        animator.SetFloat("Velocity", navAgent.velocity.magnitude / navAgent.speed);
+    }
+
+    private void HandleInventory()
+    {
+        if (currentInteractable != null && Vector3.Distance(transform.position, currentInteractable.transform.position) < interactDistance && !interacting)
         {
             currentInteractable.Interact(character);
             interacting = true;
@@ -57,7 +73,5 @@ public class GetMousePoint : MonoBehaviour
             currentInteractable = null;
             interacting = false;
         }
-
-        animator.SetFloat("Velocity", navAgent.velocity.magnitude / navAgent.speed);
     }
 }
