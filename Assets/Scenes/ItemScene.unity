@@ -34045,6 +34045,10 @@ MonoBehaviour:
   animator: {fileID: 4584236247537247963}
   interactDistance: 1
   interacting: 0
+  sword: {fileID: 2753197083675030165}
+  shield: {fileID: 5165359599341921934}
+  equipmentPanelMelee: {fileID: 1446136253}
+  equipmentPanelShield: {fileID: 629432468}
 --- !u!195 &1413888049
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -52993,7 +52997,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4944368140967725677}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be76e5f14cfee674cb30b491fb72b09b, type: 3}
   m_Name: 
