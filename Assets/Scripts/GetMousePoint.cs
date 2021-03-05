@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using DTInventory;
 
 public class GetMousePoint : MonoBehaviour
 {
@@ -19,8 +20,32 @@ public class GetMousePoint : MonoBehaviour
     public float interactDistance;
     public bool interacting;
 
+
+    public Transform sword;
+    public Transform shield;
+    public EquipmentPanel equipmentPanelMelee;
+    public EquipmentPanel equipmentPanelShield;
+
     void Update()
     {
+
+        if (equipmentPanelMelee.equipedItem!=null)
+        {
+            sword.gameObject.SetActive(true);
+        }
+        else
+        {
+            sword.gameObject.SetActive(false);
+        }
+
+        if (equipmentPanelShield.equipedItem != null)
+        {
+            shield.gameObject.SetActive(true);
+        }
+        else
+        {
+            shield.gameObject.SetActive(false);
+        }
 
         HandleNavigation();
 
@@ -69,9 +94,20 @@ public class GetMousePoint : MonoBehaviour
 
         if (interacting && Input.GetKeyDown(KeyCode.I))
         {
-            currentInteractable.StopInteracting();
+            if(currentInteractable != null)
+            {
+                currentInteractable.StopInteracting();
+            }
+            
             currentInteractable = null;
             interacting = false;
+            return;
+        }
+
+        if (!interacting && Input.GetKeyDown(KeyCode.I))
+        {
+            interacting = true;
+            return;
         }
     }
 }
